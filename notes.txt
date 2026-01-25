@@ -1,0 +1,26 @@
+Project Structure
+
+1. Create maven project
+2. Update pom.xml with required dependencies
+3. Create Folder structure
+
+4. Create Routes.java 		-> contains URL's
+5. Create UserEndPoint.java -> CRUD methods implementation
+6. Create testcases
+
+7. Create Data driven test
+		excel sheet data -> XLUtility
+		Dataproviders
+		
+8. Generate extent reports
+		Extent report utility
+		testng.xml file
+		
+9. Add logs
+	log4j2 dependency
+	log4j2.xml  --src/test/resource
+
+10 Run using testng
+
+11 Run using pom.xml
+
