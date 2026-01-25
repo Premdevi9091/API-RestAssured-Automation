@@ -24,3 +24,4 @@ Project Structure
 
 11 Run using pom.xml
 
+12 Run in Jenkins
