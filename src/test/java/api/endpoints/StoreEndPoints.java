@@ -1,19 +1,13 @@
 package api.endpoints;
 
 import api.payload.Store;
+import api.utilities.ConfigReader;
 import api.utilities.RequestSpecUtil;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import static io.restassured.RestAssured.*;
 
-import java.util.ResourceBundle;
 
 public class StoreEndPoints {
-	
-	public static ResourceBundle getURL(){
-		ResourceBundle routes = ResourceBundle.getBundle("urls"); //load the property file
-		return routes;
-	}
 
 	//Create order
 	public static Response createOrder(Store payload) {
@@ -22,7 +16,7 @@ public class StoreEndPoints {
 				given(RequestSpecUtil.getRequestSpec())
 					.body(payload)
 				.when()
-					.post(getURL().getString("store_post_url"));
+					.post(ConfigReader.get("store_post_url"));
 		
 		return response;
 	}
@@ -34,7 +28,7 @@ public class StoreEndPoints {
 				given(RequestSpecUtil.getRequestSpec())
 					.pathParam("orderId", orderId)
 				.when()
-					.get(getURL().getString("store_get_url"));
+					.get(ConfigReader.get("store_get_url"));
 			
 		return response;
 		}
@@ -47,7 +41,7 @@ public class StoreEndPoints {
 				given(RequestSpecUtil.getRequestSpec())
 					.pathParam("orderId", orderId)
 				.when()
-					.delete(getURL().getString("store_get_url"));
+					.delete(ConfigReader.get("store_delete_url"));
 				
 		return response;
 		}

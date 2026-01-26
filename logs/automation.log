@@ -147,3 +147,11 @@
 12:26:34.612 [main] DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /_rels/.rels
 12:26:34.634 [main] DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /xl/_rels/workbook.xml.rels
 12:26:34.635 [main] DEBUG org.apache.poi.openxml4j.opc.PackageRelationshipCollection - Parsing relationship: /_rels/.rels
+11:17:37.297 [main] INFO  api.test.UserTest - ******* Creating user *******
+11:17:42.136 [main] INFO  api.test.UserTest - ******* User is created *******
+11:17:42.157 [main] INFO  api.test.UserTest - ******* Reading user *******
+11:17:44.504 [main] INFO  api.test.UserTest - ******* User data is read *******
+11:17:44.509 [main] INFO  api.test.UserTest - ******* Updating user *******
+11:17:47.590 [main] INFO  api.test.UserTest - ******* User is updated *******
+11:17:47.597 [main] INFO  api.test.UserTest - ******* Deleting user *******
+11:17:48.751 [main] INFO  api.test.UserTest - ******* User is deleted *******

@@ -2,20 +2,14 @@ package api.endpoints;
 
 import static io.restassured.RestAssured.given;
 
-import java.util.ResourceBundle;
 
 import api.payload.User;
+import api.utilities.ConfigReader;
 import api.utilities.RequestSpecUtil;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 //CRUD methods
 public class UserEndPoints {
-
-	public static ResourceBundle getURL(){
-		ResourceBundle routes = ResourceBundle.getBundle("urls"); //load the property file
-		return routes;
-	}
 	
 	//Create user
 	public static Response createUser(User payload) {
@@ -24,7 +18,7 @@ public class UserEndPoints {
 				given(RequestSpecUtil.getRequestSpec())
 					.body(payload)
 				.when()
-					.post(getURL().getString("post_url"));
+					.post(ConfigReader.get("post_url"));
 		
 		return response;
 	}
@@ -36,7 +30,7 @@ public class UserEndPoints {
 				given(RequestSpecUtil.getRequestSpec())
 					.pathParam("username", userName)
 				.when()
-					.get(getURL().getString("get_url"));
+					.get(ConfigReader.get("get_url"));
 			
 		return response;
 	}
@@ -49,7 +43,7 @@ public class UserEndPoints {
 					.body(payload)
 					.pathParam("username", userName)
 				.when()
-					.put(getURL().getString("update_url"));
+					.put(ConfigReader.get("update_url"));
 		
 		return response;
 	}
@@ -61,7 +55,7 @@ public class UserEndPoints {
 				given(RequestSpecUtil.getRequestSpec())
 					.pathParam("username", userName)
 				.when()
-					.delete(getURL().getString("delete_url"));
+					.delete(ConfigReader.get("delete_url"));
 			
 		return response;
 	}
