@@ -52,45 +52,55 @@ Operations Covered
 # 📂 Project Structure
 
 ```
-RESTASSURED_SWAGGER_API_FRAMEWORK
+AUTOMATIONEXERCISE_PLAYWRIGHT
 │
-├── src/test/java
-│   ├── api.endpoints/
-│   │   ├── UserEndPoints.java
-│   │   └── StoreEndPoints.java
+├── scripts/
+│   └── CLI utilities                           → create and manage encrypted users stored in test-data/userData.json
+│
+├── tests/
+│   ├── features/
+│   │   └── Feature files (.feature)            → define BDD scenarios in Gherkin format
 │   │
-│   ├── api.payload/
-│   │   ├── User.java
-│   │   └── Store.java
+│   ├── pages/
+│   │   └── Page Object classes                 → encapsulate UI locators and page-level actions
 │   │
-│   ├── api.test/
-│   │   ├── UserTest.java
-│   │   ├── StoreTest.java
-│   │   └── testUser_DD.java
-│   │
-│   └── api.utilities/
-│       ├── ConfigReader.java
-│       ├── DataProviders.java
-│       ├── RequestSpecUtil.java
-│       ├── ExtentReportManager.java
-│       └── XLUtility.java
+│   └── step-definitions/
+│       └── Step definitions                    → map Gherkin steps to automation logic
 │
-├── src/test/resources
-│   ├── routes.properties
-│   ├── config-qa.properties
-│   └── log4j2.xml
+├── support/
+│   ├── Hooks                                   → manage test lifecycle (Before, After, AfterStep)
+│   ├── screenshotManager                       → capture and store screenshots
+│   └── reportManager                           → generate timestamp-based HTML reports
 │
-├── testData/
-│   └── UserData.xlsx
+├── utils/
+│   ├── config                                  → handle environment configuration from .env
+│   ├── testlogger                              → handle scenario-level runtime JSON logging
+│   ├── logger                                  → handle application logging using winston
+│   ├── jsonManager                             → handle generic JSON read, write, update operations
+│   ├── encryption                              → handle AES encryption and decryption
+│   ├── userDataManager                         → manage addUser/getUser from userData.json
+│   ├── UIActions                               → reusable wrapper methods for Playwright actions
+│   └── generateRandom                          → dynamic/random test data generation
 │
-├── reports/
-├── logs/
-├── test-output/
+├── world/
+│   └── CustomWorld (Scenario Context)          → maintain scenario-specific browser and logger instances
 │
-├── pom.xml
-└── testng.xml
+├── test-data/
+│   └── userData.json                           → store encrypted user credentials
+│
+├── test-reports/
+│   ├── HTML reports                            → store generated execution reports                       
+│   ├── Screenshots                             → store captured screenshots per step/failure
+│   ├── logs                                    → store framework execution logs (log.log)
+│   └── cucumber-report.json                    → store raw Cucumber JSON output (timestamp-based)
+│
+├── testLogs/
+│   └── Runtime JSON logs                       → store scenario-specific execution data
+│
+├── .env                                        → define environment variables and execution configuration
+├── cucumber.js                                 → configure Cucumber runner options and paths
+└── package.json                                → define project dependencies and run scripts
 ```
-
 ---
 
 # ⚙️ Framework Execution Flow
