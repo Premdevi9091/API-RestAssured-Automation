@@ -52,54 +52,45 @@ Operations Covered
 # 📂 Project Structure
 
 ```
-AUTOMATIONEXERCISE_PLAYWRIGHT
+RESTASSURED_SWAGGER_API_FRAMEWORK
 │
-├── scripts/
-│   └── CLI utilities                           → create and manage encrypted users stored in test-data/userData.json
+├── src/test/java
 │
-├── tests/
-│   ├── features/
-│   │   └── Feature files (.feature)            → define BDD scenarios in Gherkin format
+│   ├── api.endpoints/
+│   │   ├── UserEndPoints.java        → CRUD API methods for User module
+│   │   └── StoreEndPoints.java       → API methods for Store order module
 │   │
-│   ├── pages/
-│   │   └── Page Object classes                 → encapsulate UI locators and page-level actions
+│   ├── api.payload/
+│   │   ├── User.java                 → POJO class for User request payload
+│   │   └── Store.java                → POJO class for Store order payload
 │   │
-│   └── step-definitions/
-│       └── Step definitions                    → map Gherkin steps to automation logic
+│   ├── api.test/
+│   │   ├── UserTest.java             → Test cases for User APIs
+│   │   ├── StoreTest.java            → Test cases for Store APIs
+│   │   └── testUser_DD.java          → Data Driven Tests using Excel
+│   │
+│   └── api.utilities/
+│       ├── ConfigReader.java         → Reads configuration properties
+│       ├── DataProviders.java        → TestNG DataProviders
+│       ├── ExtentReportManager.java  → Generates Extent HTML reports
+│       ├── RequestSpecUtil.java      → Reusable RestAssured request specifications
+│       └── XLUtility.java            → Excel utilities using Apache POI
 │
-├── support/
-│   ├── Hooks                                   → manage test lifecycle (Before, After, AfterStep)
-│   ├── screenshotManager                       → capture and store screenshots
-│   └── reportManager                           → generate timestamp-based HTML reports
+├── src/test/resources/
+│   ├── schemas/                      → JSON schema validation files
+│   ├── config-qa.properties          → Environment configuration
+│   ├── routes.properties             → API endpoint URLs
+│   └── log4j2.xml                    → Logging configuration
 │
-├── utils/
-│   ├── config                                  → handle environment configuration from .env
-│   ├── testlogger                              → handle scenario-level runtime JSON logging
-│   ├── logger                                  → handle application logging using winston
-│   ├── jsonManager                             → handle generic JSON read, write, update operations
-│   ├── encryption                              → handle AES encryption and decryption
-│   ├── userDataManager                         → manage addUser/getUser from userData.json
-│   ├── UIActions                               → reusable wrapper methods for Playwright actions
-│   └── generateRandom                          → dynamic/random test data generation
+├── testData/
+│   └── UserData.xlsx                 → Excel test data for Data Driven Testing
 │
-├── world/
-│   └── CustomWorld (Scenario Context)          → maintain scenario-specific browser and logger instances
+├── reports/                          → Generated Extent Reports
+├── logs/                             → Log4j2 execution logs
+├── test-output/                      → TestNG reports
 │
-├── test-data/
-│   └── userData.json                           → store encrypted user credentials
-│
-├── test-reports/
-│   ├── HTML reports                            → store generated execution reports                       
-│   ├── Screenshots                             → store captured screenshots per step/failure
-│   ├── logs                                    → store framework execution logs (log.log)
-│   └── cucumber-report.json                    → store raw Cucumber JSON output (timestamp-based)
-│
-├── testLogs/
-│   └── Runtime JSON logs                       → store scenario-specific execution data
-│
-├── .env                                        → define environment variables and execution configuration
-├── cucumber.js                                 → configure Cucumber runner options and paths
-└── package.json                                → define project dependencies and run scripts
+├── pom.xml                           → Maven dependencies
+└── testng.xml                        → TestNG suite configuration
 ```
 ---
 
