@@ -128,21 +128,28 @@ Log4j2     Extent Report
 
 # 🧪 Sample API Test
 
+Example TestNG test using **DataProvider + RestAssured + POJO payload**
+
 ```java
-@Test
-public void testCreateUser() {
+@Test(dataProvider = "Data", dataProviderClass = DataProviders.class)
+public void testPostUser(String userID, String userName, String fname,
+                         String lname, String email, String pwd, String phone) {
 
-    User payload = new User();
-    payload.setId(101);
-    payload.setUsername("testuser");
-    payload.setFirstName("QA");
-    payload.setLastName("Automation");
+    User userPayload = new User();
 
-    Response response = UserEndPoints.createUser(payload);
+    userPayload.setId(Integer.parseInt(userID));
+    userPayload.setUsername(userName);
+    userPayload.setFirstName(fname);
+    userPayload.setLastName(lname);
+    userPayload.setEmail(email);
+    userPayload.setPassword(pwd);
+    userPayload.setPhone(phone);
 
-    response.then()
-            .statusCode(200)
-            .log().all();
+    Response response = UserEndPoints.createUser(userPayload);
+
+    response.then().log().body();
+
+    Assert.assertEquals(response.getStatusCode(), 200);
 }
 ```
 
@@ -241,8 +248,5 @@ mvn clean test
 
 # 👨‍💻 Author
 
-API Automation Framework developed using
-
-**Java + Rest Assured + TestNG + Maven**
-
-Designed to demonstrate **industry-level API automation framework structure**.
+Premdevi Kumawat
+QA Engineer
