@@ -248,5 +248,6 @@ mvn clean test
 
 # 👨‍💻 Author
 
-Premdevi Kumawat
-QA Engineer
+**Premdevi Kumawat**
+
+QA Automation Engineer
